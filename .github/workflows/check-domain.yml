@@ -1,0 +1,36 @@
+name: Check domains
+
+on:
+  push:
+    branches: [ master ]
+  #schedule:
+  #  - cron:  '0 8 * * *'
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    name: Check domain
+    strategy:
+      matrix:
+        domain:
+          - www.gorro.com.ar
+          - tienda.gorro.com.ar
+          - www.tresdoce.com.ar
+          - www.estudiofluk.com.ar
+          - apicedes.tresdoce.com.ar
+          - www.estudiohamaca.com.ar
+          - www.adipol.com.ar
+          - www.fragrancemarket.com.ar
+          - jenkins.tresdoce.com.ar
+          - static-pre.tresdoce.com.ar
+          - static.tresdoce.com.ar
+          -
+    steps:
+      - name: Check domain SSL and registry expire date
+        id: check-domain
+        uses: codex-team/action-check-domain@v1
+        with:
+          url: ${{ matrix.domain }}
+
+      - run: echo 'SSL cert has ${{ steps.check-domain.outputs.ssl-expire-days-left }} days left'
+        if: ${{ steps.check-domain.outputs.ssl-expire-days-left }}
