@@ -6,22 +6,19 @@ on:
   pull_request:
     branches: [ master ]
 
-permissions:
-  contents: read
-
 jobs:
   setup:
     runs-on: ubuntu-latest
     name: "Setup"
     steps:
-    - name: "⚙ Setup PHP"
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: 7.4
-        extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
+      - name: "⚙ Setup PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
 
-    - name: "✅ Checkout repository"
-      uses: actions/checkout@v2
+      - name: "✅ Checkout repository"
+        uses: actions/checkout@v2
 
   check:
     runs-on: ubuntu-latest
@@ -32,7 +29,7 @@ jobs:
         with:
           fetch-depth: 0
 
-    - name: "👨‍💻 SSL Check"
-      run: |
-        chmod a+x sslcheck
-        ./sslcheck www.gorro.com.ar tienda.gorro.com.ar www.tresdoce.com.ar www.estudiofluk.com.ar apicedes.tresdoce.com.ar www.estudiohamaca.com.ar www.adipol.com.ar jenkins.tresdoce.com.ar static-pre.tresdoce.com.ar static.tresdoce.com.ar
+      - name: "👨‍💻 SSL Check"
+        run: |
+          chmod a+x sslcheck
+          ./sslcheck www.gorro.com.ar tienda.gorro.com.ar www.tresdoce.com.ar www.estudiofluk.com.ar apicedes.tresdoce.com.ar www.estudiohamaca.com.ar www.adipol.com.ar jenkins.tresdoce.com.ar static-pre.tresdoce.com.ar static.tresdoce.com.ar
