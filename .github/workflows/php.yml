@@ -9,9 +9,6 @@ on:
 permissions:
   contents: read
 
-env:
-  TD_DOMAINS: ${{secrets.TD_DOMAINS}}
-
 jobs:
   build:
 
@@ -25,5 +22,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: SSL Check
-      run: ./sslcheck ${{ TD_DOMAINS }}
+      run: |
+        TL_DOMAINS=${{secrets.TD_DOMAINS}}
+        ./sslcheck ${TD_DOMAINS}
 
