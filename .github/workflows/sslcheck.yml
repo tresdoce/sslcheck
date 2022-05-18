@@ -22,4 +22,4 @@ jobs:
 
     - name: SSL Check
       run: |
-        `php ./sslcheck ${DOMAINS}`
+        `php ./sslcheck ${{ env.DOMAINS }}`
