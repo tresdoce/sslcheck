@@ -23,6 +23,6 @@ jobs:
 
     - name: SSL Check
       run: |
-        TL_DOMAINS=${{secrets.TD_DOMAINS}}
-        ./sslcheck ${TD_DOMAINS}
+        DOMAINS=${{secrets.TD_DOMAINS}}
+        ./sslcheck $DOMAINS
 
