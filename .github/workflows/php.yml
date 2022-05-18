@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 env:
-  TD_DOMAINS: ${{TD_DOMAINS}}
+  TD_DOMAINS: ${{secrets.TD_DOMAINS}}
 
 jobs:
   build:
