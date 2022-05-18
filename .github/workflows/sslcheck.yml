@@ -22,6 +22,6 @@ jobs:
 
     - name: SSL Check
       run: |
-        echo ${DOMAINS}
+        echo '${DOMAINS}'
         echo ${{ env.DOMAINS }}
         ./sslcheck ${{ env.DOMAINS }}
