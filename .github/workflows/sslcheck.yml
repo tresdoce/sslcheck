@@ -10,16 +10,29 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
+    name: "Setup"
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup PHP
+    - name: "⚙ Setup PHP"
       uses: shivammathur/setup-php@v2
       with:
         php-version: 7.4
-    - uses: actions/checkout@v3
+        extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
 
-    - name: SSL Check
+    - name: "✅ Checkout repository"
+      uses: actions/checkout@v2
+
+  check:
+    runs-on: ubuntu-latest
+    name: "Check"
+    needs: setup
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+    - name: "👨‍💻 SSL Check"
       run: |
+        chmod a+x sslcheck
         ./sslcheck www.gorro.com.ar tienda.gorro.com.ar www.tresdoce.com.ar www.estudiofluk.com.ar apicedes.tresdoce.com.ar www.estudiohamaca.com.ar www.adipol.com.ar jenkins.tresdoce.com.ar static-pre.tresdoce.com.ar static.tresdoce.com.ar
