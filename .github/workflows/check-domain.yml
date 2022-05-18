@@ -13,18 +13,18 @@ jobs:
     strategy:
       matrix:
         domain:
-          - www.gorro.com.ar
-          - tienda.gorro.com.ar
-          - www.tresdoce.com.ar
-          - www.estudiofluk.com.ar
-          - apicedes.tresdoce.com.ar
-          - www.estudiohamaca.com.ar
-          - www.adipol.com.ar
-          - www.fragrancemarket.com.ar
-          - jenkins.tresdoce.com.ar
-          - static-pre.tresdoce.com.ar
-          - static.tresdoce.com.ar
-          -
+          - https://www.gorro.com.ar
+          - https://tienda.gorro.com.ar
+          - https://www.tresdoce.com.ar
+          - https://www.estudiofluk.com.ar
+          - https://apicedes.tresdoce.com.ar
+          - https://www.estudiohamaca.com.ar
+          - https://www.adipol.com.ar
+          - https://www.fragrancemarket.com.ar
+          - https://jenkins.tresdoce.com.ar
+          - https://static-pre.tresdoce.com.ar
+          - https://static.tresdoce.com.ar
+
     steps:
       - name: Check domain SSL and registry expire date
         id: check-domain
