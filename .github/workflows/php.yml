@@ -1,4 +1,4 @@
-name: PHP Composer
+name: SSL Check
 
 on:
   push:
@@ -6,12 +6,11 @@ on:
   pull_request:
     branches: [ master ]
 
-permissions:
-  contents: read
+env:
+  DOMAINS: ${{secrets.TD_DOMAINS}}
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -23,6 +22,4 @@ jobs:
 
     - name: SSL Check
       run: |
-        DOMAINS=${{secrets.TD_DOMAINS}}
-        ./sslcheck $DOMAINS
-
+        ./sslcheck ${{ env.DOMAINS }}
