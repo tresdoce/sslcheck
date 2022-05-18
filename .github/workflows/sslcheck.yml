@@ -22,4 +22,6 @@ jobs:
 
     - name: SSL Check
       run: |
-        `php ./sslcheck ${{ env.DOMAINS }}`
+        echo ${DOMAINS}
+        echo ${{ env.DOMAINS }}
+        ./sslcheck ${{ env.DOMAINS }}
