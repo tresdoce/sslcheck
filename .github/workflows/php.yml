@@ -24,9 +24,9 @@ jobs:
         php-version: 7.4
     - uses: actions/checkout@v3
 
-    - name: test sslcheck
+    - name: SSL Check
       run: |
-        ./sslcheck ${TD_DOMAINS}
+        ./sslcheck ${ TD_DOMAINS }
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
